@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace APIControleFinanceiroPessoal.Models;
 
@@ -18,5 +19,6 @@ public class Categoria
     [StringLength(20)]
     public string? Nome { get; set; }
 
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public ICollection<Transacao>? Transacoes { get; set; }
 }
